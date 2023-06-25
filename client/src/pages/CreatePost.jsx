@@ -8,15 +8,20 @@ import { getRandomPrompt } from '../utils'
 const CreatePost = () => {
   const [generatingImg, setgeneratingImg] = useState(false)
     const navigate = useNavigate()
+    const [loading, setLoading] = useState(false);
     const [Form, setForm] = useState({
         name:"",
         prompt:"",
         photo:""
     })
-
+   const  generatingImage=()=>{}
     const handleSubmit=(() => {})
-    const handleChange = (e) => {}
+    const handleChange = (e) => {
+      setForm({ ...Form, [e.target. name]: e.target. value })
+    }
     const handleSupriseMe= () =>{
+      const randomPrompt= getRandomPrompt(Form.prompt);
+      setForm({...Form, prompt:randomPrompt})
     }
   return (
     <>
@@ -40,15 +45,16 @@ community</p>
     />
 
 <FormField
-    labelName="Prompt"
-    name="Prompt"
-    type="text"
-    value={Form.prompt}
-    handleChange={handleChange}
-    placeholder="A pluse toy"
-    isSupriseMe
-    handleSupriseMe={handleSupriseMe}
-    />
+  labelName="Prompt"
+  name="prompt"
+  type="text"
+  value={Form.prompt}
+  handleChange={handleChange}
+  placeholder="A plus toy"
+  isSupriseMe
+  handleSupriseMe={handleSupriseMe}
+/>
+
 
     <div className='relativeclassName-"relative bg-gray-50 border
 •border-gray-300 Otext-gray-900 text-sm rounded focus: ring-blue-500 focus :border-blue-500 w-64 p-3
@@ -75,9 +81,16 @@ h-64 flex justify-center items-center'>{
 }
 </div>
   </div>
-<div>
-  <button >Generate Image </button>
+<div className='mt-5 flex gap -5'>
+  <button className=' text-white bg-indigo-600 font -medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center' type="button" onClick={generatingImage}>{generatingImg? 'generating...':'generate'} </button>
 </div>
+
+<div className="mt-10">
+<p className="mt-2 Otext- [#666e75] text- [14px]">Once you have created the image you want, you can share it with others in the community </p> </div>
+<button className=' text-white bg-indigo-500 font -medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center'>
+  {loading?'sharing...':'share with community'}
+</button>
+
 </form>
 
 

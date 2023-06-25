@@ -6,7 +6,7 @@ const FormField = ({labelName,type,name,placeholder,value,handleChange,isSuprise
       <label htmlFor={name} className="block text-center gap-2 mb-2">
         
         {labelName}
-        <input className='ml-2 rounded ' type={type} name={name} placeholder={placeholder} id={name} value={value} onChange={handleChange} />
+        <input className='ml-2 p-2 rounded text-black' type={type} name={name} placeholder={placeholder} id={name} value={value} onChange={handleChange} />
 
       </label>{
         isSupriseMe &&(<button
